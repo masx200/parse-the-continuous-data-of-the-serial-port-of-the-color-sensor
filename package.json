@@ -1,19 +1,19 @@
 {
-  "type": "module",
-  "name": "parse-the-continuous-data-of-the-serial-port-of-the-color-sensor",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/fs-extra": "^11.0.4",
-    "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.10.5",
-    "fs-extra": "^11.2.0",
-    "lodash-es": "^4.17.21",
-    "typescript": "^5.3.3"
-  }
+    "type": "module",
+    "name": "parse-the-continuous-data-of-the-serial-port-of-the-color-sensor",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {},
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/fs-extra": "^11.0.4",
+        "@types/lodash-es": "^4.17.12",
+        "@types/node": "^20.10.5",
+        "fs-extra": "^11.2.0",
+        "lodash-es": "^4.17.21",
+        "typescript": "^5.3.3"
+    }
 }
