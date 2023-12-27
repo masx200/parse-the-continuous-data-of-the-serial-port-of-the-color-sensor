@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
-import fs_extra from "fs-extra"
-import path from 'path'
+import fs_extra from "fs-extra";
+import path from "path";
 import process from "process";
 import { uniqBy } from "lodash-es";
 
@@ -18,25 +18,27 @@ async function* readLines(filePath) {
   }
 }
 async function main() {
-
-
   for (const file of process.argv.slice(2)) {
-    console.log(file)
+    console.log(file);
     // 使用函数
     const result = [];
 
     let data = {};
     for await (
       const line of readLines(
-        file
+        file,
       )
     ) {
-      if (line.startsWith("[DRIVER_TASK----LRE_381]light on states get red :")) {
+      if (
+        line.startsWith("[DRIVER_TASK----LRE_381]light on states get red :")
+      ) {
         data = {};
         // console.log(line);
 
         data.red = Number(
-          line.slice("[DRIVER_TASK----LRE_381]light on states get red :".length),
+          line.slice(
+            "[DRIVER_TASK----LRE_381]light on states get red :".length,
+          ),
         );
       }
       if (
@@ -52,10 +54,14 @@ async function main() {
           ),
         );
       }
-      if (line.startsWith("[DRIVER_TASK----LRE_381]light on states get blue :")) {
+      if (
+        line.startsWith("[DRIVER_TASK----LRE_381]light on states get blue :")
+      ) {
         // console.log(line);
         data.blue = Number(
-          line.slice("[DRIVER_TASK----LRE_381]light on states get blue :".length),
+          line.slice(
+            "[DRIVER_TASK----LRE_381]light on states get blue :".length,
+          ),
         );
         result.push(data);
         // data = {};
@@ -63,14 +69,15 @@ async function main() {
     }
     const resset = uniqBy(result, (item) => JSON.stringify(item));
     // console.log(JSON.stringify(resset));
-    const output = path.resolve(path.dirname(file), path.basename(file, ".txt") + ".json")
+    const output = path.resolve(
+      path.dirname(file),
+      path.basename(file, ".txt") + ".json",
+    );
     await fs_extra.writeJSON(output, resset, {
       // spaces: 2,
     });
-    console.log(output)
+    console.log(output);
   }
-
-
 }
 main()
   .then(() => {
